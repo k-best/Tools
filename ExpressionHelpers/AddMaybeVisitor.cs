@@ -12,9 +12,9 @@ namespace ExpressionHelpers
 
         protected override Expression VisitMember(MemberExpression node)
         {
-            Visit(node.Expression);
+            var expression = Visit(node.Expression);
 
-            var expressionType = node.Expression.Type;
+            var expressionType = expression.Type;
             var memberType = node.Type;
 
             var withMethodinfo = typeof(AddMaybeVisitor)
@@ -25,7 +25,7 @@ namespace ExpressionHelpers
             var l = Expression.Lambda(Expression.MakeMemberAccess(p, node.Member), p);
 
             return Expression.Call(withMethodinfo,
-                node.Expression,
+                expression,
                 Expression.Constant(l.Compile(), typeof(Func<,>).MakeGenericType(expressionType, memberType))
                 );
         }
