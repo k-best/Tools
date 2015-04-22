@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("ExpressionHelpers")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Extension to unify IQueriable and IEnumerable behavior about null values")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Kirill Bestemyanov")]
 [assembly: AssemblyProduct("ExpressionHelpers")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
