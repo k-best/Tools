@@ -6,15 +6,15 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace MaybeEnumerableQueryTest
 {
     [TestClass]
-    public class AsMaybeQueriableTests
+    public class AsMaybequeryableTests
     {
         [TestMethod]
         public void ShouldWork()
         {
             var sequence = Enumerable.Range(0, 20000);
-            var queriable = sequence.AsMaybeQueriable();
-            queriable = queriable.Where(c => c > 9999).Select(c => c + 10000);
-            var result = queriable.ToArray();
+            var queryable = sequence.AsMaybeQueryable();
+            queryable = queryable.Where(c => c > 9999).Select(c => c + 10000);
+            var result = queryable.ToArray();
             Assert.AreEqual(10000, result.Length);
             Assert.AreEqual(20000, result[0]);
         }
@@ -32,8 +32,8 @@ namespace MaybeEnumerableQueryTest
                     st.Property = new Stab1();
                 sequence[i] = st;
             }
-            var queriable = sequence.AsMaybeQueriable();
-            var result = queriable.Select(c => c.Property.Property.Name);
+            var queryable = sequence.AsMaybeQueryable();
+            var result = queryable.Select(c => c.Property.Property.Name);
             foreach (var name in result)
             {
                 Console.WriteLine(name);

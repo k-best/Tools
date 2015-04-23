@@ -5,9 +5,9 @@ using System.Linq;
 
 namespace ExpressionHelpers
 {
-    public static class QueriableExtensions
+    public static class QueryableExtensions
     {
-        public static IQueryable<TElement> AsMaybeQueriable<TElement>(this IEnumerable<TElement> source)
+        public static IQueryable<TElement> AsMaybeQueryable<TElement>(this IEnumerable<TElement> source)
         {
             if (source == null)
                 throw new ArgumentNullException("source");
@@ -15,7 +15,7 @@ namespace ExpressionHelpers
             return elements ?? new MaybeEnumerableQuery<TElement>(source);
         }
 
-        public static IQueryable AsMaybeQueriable(this IEnumerable source)
+        public static IQueryable AsMaybeQueryable(this IEnumerable source)
         {
             if (source == null)
                 throw new ArgumentNullException("source");

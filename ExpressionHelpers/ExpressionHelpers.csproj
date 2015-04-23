@@ -42,7 +42,7 @@
     <Compile Include="AddMaybeVisitor.cs" />
     <Compile Include="MaybeEnumerableQuery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QueriableExtensions.cs" />
+    <Compile Include="QueryableExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ExpressionHelpers.nuspec" />
