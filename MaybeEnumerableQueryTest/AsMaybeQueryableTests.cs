@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace MaybeEnumerableQueryTest
 {
     [TestClass]
-    public class AsMaybequeryableTests
+    public class AsMaybeQueryableTests
     {
         [TestMethod]
         public void ShouldWork()

@@ -50,7 +50,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="AsMaybeQueriableTests.cs" />
+    <Compile Include="AsMaybeQueryableTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
