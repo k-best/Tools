@@ -22,9 +22,9 @@ namespace ExpressionHelpers
         }
     } 
 
-    public class MaybeEnumerableQuery<T>: MaybeEnumerableQuery, IQueryProvider, IOrderedQueryable<T>, IQueryable<T>, IOrderedQueryable, IQueryable, IEnumerable<T>, IEnumerable
+    public class MaybeEnumerableQuery<T>: MaybeEnumerableQuery, IQueryProvider, IOrderedQueryable<T>
     {
-        private EnumerableQuery<T> _innerQuery;
+        private readonly EnumerableQuery<T> _innerQuery;
 
         public MaybeEnumerableQuery(IEnumerable<T> enumerable)
         {
@@ -72,19 +72,10 @@ namespace ExpressionHelpers
             return GetEnumerator();
         }
 
-        Expression IQueryable.Expression
-        {
-            get { return ((IQueryable)_innerQuery).Expression; }
-        }
+        Expression IQueryable.Expression => ((IQueryable)_innerQuery).Expression;
 
-        public Type ElementType
-        {
-            get { return ((IQueryable)_innerQuery).ElementType; }
-        }
+        public Type ElementType => ((IQueryable)_innerQuery).ElementType;
 
-        public IQueryProvider Provider
-        {
-            get { return this; }
-        }
+        public IQueryProvider Provider => this;
     }
 }

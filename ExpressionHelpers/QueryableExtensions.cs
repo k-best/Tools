@@ -10,7 +10,7 @@ namespace ExpressionHelpers
         public static IQueryable<TElement> AsMaybeQueryable<TElement>(this IEnumerable<TElement> source)
         {
             if (source == null)
-                throw new ArgumentNullException("source");
+                throw new ArgumentNullException(nameof(source));
             var elements = source as IQueryable<TElement>;
             return elements ?? new MaybeEnumerableQuery<TElement>(source);
         }
@@ -18,13 +18,13 @@ namespace ExpressionHelpers
         public static IQueryable AsMaybeQueryable(this IEnumerable source)
         {
             if (source == null)
-                throw new ArgumentNullException("source");
+                throw new ArgumentNullException(nameof(source));
             var queryable = source as IQueryable;
             if (queryable != null)
                 return queryable;
             var enumType = FindGenericType(typeof(IEnumerable<>), source.GetType());
             if (enumType == null)
-                throw new ArgumentException("Source is not generic","source");
+                throw new ArgumentException("Source is not generic",nameof(source));
             return MaybeEnumerableQuery.Create(enumType.GetGenericArguments()[0], source);
         }
 
