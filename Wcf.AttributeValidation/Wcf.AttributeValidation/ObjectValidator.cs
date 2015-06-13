@@ -10,26 +10,27 @@ namespace Wcf.AttributeValidation
 {
     public class ObjectValidator : IValidator
     {
-        private int _safetyCounter;
-
         public IEnumerable<ValidationResult> Validate(IEnumerable<object> inputs, IServiceProvider serviceProvider)
         {
             return inputs.Aggregate((IEnumerable<ValidationResult>)new ValidationResult[0],
                 (current, input) =>
-                    current.Concat(ValidateObject(input, string.Empty, serviceProvider)));
+                    current.Concat(ValidateObject(input, string.Empty, 0, serviceProvider)));
         }
 
-        private IEnumerable<ValidationResult> ValidateObject(object instance, string prefix, IServiceProvider serviceProvider)
+        private IEnumerable<ValidationResult> ValidateObject(object instance, string prefix, int recursionDepth, IServiceProvider serviceProvider)
         {
             if (instance == null)
                 return new ValidationResult[0];
+            if(recursionDepth>1000)
+                throw new InvalidOperationException("Possible circullar reference");
             var validationContext = new ValidationContext(instance, serviceProvider, null);
+            var newRecursionDepth = recursionDepth + 1;
             return
                 ValidateAttributes(instance, validationContext, prefix)
                     .Concat(ValidateIValidatableObject(instance, validationContext, prefix))
                     .Concat(
                         GetChildComplexObjects(instance)
-                            .SelectMany(c => ValidateObject(c.Item1, prefix + c.Item2 + ".", serviceProvider)))
+                            .SelectMany(c => ValidateObject(c.Item1, prefix + c.Item2 + ".", newRecursionDepth, serviceProvider)))
                     .ToArray();
         }
 
@@ -86,13 +87,13 @@ namespace Wcf.AttributeValidation
         private IEnumerable<Tuple<object, string>> GetChildComplexObjects(object instance)
         {
             Debug.Assert(instance != null);
-            if (_safetyCounter > 100000)
-                throw new InvalidOperationException("Possible circullar references");
-            _safetyCounter++;
-            //если массив, то у него нет комплексных дочерних свойств
+            //если коллекция, то у нее нет комплексных дочерних свойств
             var enumerableInstance = instance as IEnumerable;
             if (enumerableInstance != null)
+            {
                 foreach (var tuple in ValidateCollection(enumerableInstance, string.Empty)) yield return tuple;
+                yield break;
+            }
             var propDescriptors =
                 TypeDescriptor.GetProperties(instance).Cast<PropertyDescriptor>().ToArray();
             foreach (var propertyDescriptor in propDescriptors)
@@ -100,11 +101,6 @@ namespace Wcf.AttributeValidation
                 var value = propertyDescriptor.GetValue(instance);
                 if (value == null)
                     continue;
-                var enumerableValue = value as IEnumerable;
-                if (enumerableValue!=null)
-                {
-                    foreach (var tuple in ValidateCollection(enumerableValue, propertyDescriptor.Name)) yield return tuple;
-                }
                 if (IsComplexType(propertyDescriptor))
                     yield return Tuple.Create(value, propertyDescriptor.Name);
             }
