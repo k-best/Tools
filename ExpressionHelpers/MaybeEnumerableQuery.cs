@@ -72,10 +72,19 @@ namespace ExpressionHelpers
             return GetEnumerator();
         }
 
-        Expression IQueryable.Expression => ((IQueryable)_innerQuery).Expression;
+        Expression IQueryable.Expression
+        {
+            get { return ((IQueryable) _innerQuery).Expression; }
+        }
 
-        public Type ElementType => ((IQueryable)_innerQuery).ElementType;
+        public Type ElementType
+        {
+            get { return ((IQueryable) _innerQuery).ElementType; }
+        }
 
-        public IQueryProvider Provider => this;
+        public IQueryProvider Provider
+        {
+            get { return this; }
+        }
     }
 }
