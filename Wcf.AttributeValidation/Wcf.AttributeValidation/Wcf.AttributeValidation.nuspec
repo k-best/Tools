@@ -1,18 +1,22 @@
 ﻿<?xml version="1.0"?> 
 <package > 
 	<metadata> 
-		<id>$id$</id> 
-		<version>$version$</version> 
-		<title>$title$</title> 
-		<authors>$author$</authors> 
-		<owners>$author$</owners> 
+		<id>Wcf.AttributeValidation</id> 
+		<version>0.9.4</version> 
+		<title>Attribute validation package for WCF</title> 
+		<authors>Kirill.Bestemyanov</authors> 
+		<owners>Kirill.Bestemyanov</owners> 
 		<licenseUrl>https://github.com/k-best/Tools/blob/master/License</licenseUrl> 
 		<projectUrl>https://github.com/k-best/Tools/tree/master/Wcf.AttributeValidation</projectUrl> 
 		<requireLicenseAcceptance>false</requireLicenseAcceptance> 
-		<description>$description$</description> 
+		<description>Attribute validation package for WCF</description> 
 		<copyright>Copyright 2015</copyright> 
 		<tags>WCF Attribute Validation</tags> 
 		<dependencies> 			
-		</dependencies> 
-	</metadata> 
+		</dependencies>
+	</metadata>
+  <files>
+    <file src="Content\web.config.install.xdt" target="Content" />
+    <file src="Content\web.config.uninstall.xdt" target="Content" />
+  </files>
 </package> 

@@ -55,6 +55,8 @@
     <Compile Include="ValidationParameterInspector.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Content\web.config.uninstall.xdt" />
+    <None Include="Content\web.config.install.xdt" />
     <None Include="Wcf.AttributeValidation.nuspec" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
