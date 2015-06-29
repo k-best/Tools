@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0"?> 
 <package > 
-	<metadata> 
-		<id>Wcf.AttributeValidation</id> 
-		<version>0.9.4</version> 
-		<title>Attribute validation package for WCF</title> 
+	<metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>Attribute validation package for WCF</title> 
 		<authors>Kirill.Bestemyanov</authors> 
 		<owners>Kirill.Bestemyanov</owners> 
 		<licenseUrl>https://github.com/k-best/Tools/blob/master/License</licenseUrl> 
