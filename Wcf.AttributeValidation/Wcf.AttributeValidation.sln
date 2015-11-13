@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.22823.1
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wcf.AttributeValidation", "Wcf.AttributeValidation\Wcf.AttributeValidation.csproj", "{5CE84004-959F-4664-BB9E-80EB293FD1BD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wcf.AttributeValidation.Test", "Wcf.AttributeValidation.Test\Wcf.AttributeValidation.Test.csproj", "{F0DB9580-4892-4997-A77C-665B7A85375D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wcf.AttributeValidation.Example", "Wcf.AttributeValidation.Example\Wcf.AttributeValidation.Example.csproj", "{434059B5-CCFC-4C17-8393-CB53716BD853}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{F0DB9580-4892-4997-A77C-665B7A85375D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F0DB9580-4892-4997-A77C-665B7A85375D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F0DB9580-4892-4997-A77C-665B7A85375D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{434059B5-CCFC-4C17-8393-CB53716BD853}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{434059B5-CCFC-4C17-8393-CB53716BD853}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{434059B5-CCFC-4C17-8393-CB53716BD853}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{434059B5-CCFC-4C17-8393-CB53716BD853}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
