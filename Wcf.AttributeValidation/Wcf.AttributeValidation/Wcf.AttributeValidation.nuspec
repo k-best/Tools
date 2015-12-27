@@ -18,5 +18,6 @@
   <files>
     <file src="Content\web.config.install.xdt" target="Content" />
     <file src="Content\web.config.uninstall.xdt" target="Content" />
+    <file src="Content\readme.txt" target="Content" />
   </files>
 </package> 
